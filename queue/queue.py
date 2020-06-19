@@ -33,4 +33,4 @@ class Queue:
             return None
         else:
             self.size -= 1
-            return self.storage.pop()
+            return self.storage.pop(0)
