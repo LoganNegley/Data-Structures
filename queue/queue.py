@@ -17,20 +17,39 @@ from singly_linked_list import LinkedList
 from singly_linked_list import LinkedList
 
 # Implementing with list
+# class Queue:
+#     def __init__(self):
+#         self.size = 0
+#         self.storage = []
+    
+#     def __len__(self):
+#         self.size
+
+#     def enqueue(self, value):
+#         self.storage.insert(-1, value)
+
+#     def dequeue(self):
+#         if len(self.storage) == 0:
+#             return None
+#         else:
+#             self.size -= 1
+#             return self.storage.pop(-1)
+
+# Linked_List
 class Queue:
     def __init__(self):
         self.size = 0
-        self.storage = []
+        self.storage = LinkedList()
     
     def __len__(self):
         self.size
 
     def enqueue(self, value):
-        self.storage.insert(-1, value)
+        self.storage.add_to_tail(value)
 
     def dequeue(self):
         if len(self.storage) == 0:
             return None
         else:
             self.size -= 1
-            return self.storage.pop(0)
+            return self.storage.remove_head()
