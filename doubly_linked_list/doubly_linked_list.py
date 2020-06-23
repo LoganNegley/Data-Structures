@@ -127,13 +127,14 @@ class DoublyLinkedList:
     def delete(self, node):
         if self.head == None and self.tail == None:
             return None
+        self.length -= 1
         if self.head == self.tail and node == self.head:
             self.head == None and self.tail == None
-        if node == self.head:
+        elif node == self.head:
             self.head == node.next
             node.delete()
             # self.head.next == node.next
-        if node == self.tail:
+        elif node == self.tail:
             self.tail == node.prev
             self.tail.next == None
         else:
