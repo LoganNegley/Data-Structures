@@ -67,7 +67,7 @@ class DoublyLinkedList:
             return None
         else:
             self.length - 1
-            
+
 
     """Wraps the given value in a ListNode and inserts it 
     as the new tail of the list. Don't forget to handle 
@@ -102,7 +102,15 @@ class DoublyLinkedList:
     """Removes a node from the list and handles cases where
     the node was the head or the tail"""
     def delete(self, node):
-        pass
+        if self.head == None and self.tail == None:
+            return None
+        elif self.head == self.tail and node == self.head:
+            self.head == None and self.tail == None
+        elif node == self.head:
+            self.head == node.next
+            node.prev == None
+            self.head.next == node.next
+            
         
     """Returns the highest value currently in the list"""
     def get_max(self):
