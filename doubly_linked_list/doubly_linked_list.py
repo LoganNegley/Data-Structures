@@ -66,8 +66,8 @@ class DoublyLinkedList:
         if self.head == None:
             return None
         else:
-            self.length - 1
             head_value = self.head.value
+            # self.head = self.head.next
             self.delete(self.head)
             return head_value
 
@@ -89,11 +89,11 @@ class DoublyLinkedList:
     current tail's previous node the new tail of the List.
     Returns the value of the removed Node."""
     def remove_from_tail(self):
-        if self.head == None and self.tail == None:
+        if self.tail == None:
             return None
         else:
-            self.length - 1
             tail_value = self.tail.value
+            # self.tail = self.tail.prev
             self.delete(self.tail)
             return tail_value
 
@@ -113,33 +113,43 @@ class DoublyLinkedList:
     """Removes the input node from its current spot in the 
     List and inserts it as the new tail node of the List."""
     def move_to_end(self, node):
-        if self.head == None and self.tail == None:
+        if node == self.tail:
             return None
-        if self.head == self.tail:
-            return None
-        else:
-            old_value = node.value
-            self.delete(node)
-            self.add_to_tail(old_value)
+        old_value = node.value
+        self.delete(node)
+        self.add_to_tail(old_value)
 
     """Removes a node from the list and handles cases where
     the node was the head or the tail"""
     def delete(self, node):
+        # check to see if the list isn't empty
         if self.head == None and self.tail == None:
             return None
         self.length -= 1
-        if self.head == self.tail and node == self.head:
-            self.head == None and self.tail == None
-        elif node == self.head:
+        # if only one node
+        if self.head == self.tail:
+            self.head == None 
+            self.tail == None
+        # if the node is the head
+        elif self.head == node:
             self.head == node.next
             node.delete()
-            # self.head.next == node.next
-        elif node == self.tail:
+        # if the node is the tail
+        elif self.tail == node:
             self.tail == node.prev
-            self.tail.next == None
+            node.delete()
+        # if node is in the middle
         else:
             node.delete()
         
     """Returns the highest value currently in the list"""
     def get_max(self):
-        pass
+        if self.head == None:
+            return None
+        val_max = self.head.value
+        current = self.head
+        while current:
+            if current.value > val_max:
+                val_max = current.value
+            current = current.next
+        return val_max
