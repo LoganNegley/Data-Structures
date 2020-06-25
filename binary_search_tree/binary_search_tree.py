@@ -66,7 +66,14 @@ class BSTNode:
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
-        pass
+        # Call on root value first
+        fn(self.value)
+        # Is there a left node? If so run fn on it
+        if self.left is not None:
+            self.left.for_each(fn)
+        # Is there a node on the left side if so run fn on it?
+        if self.right is not None:
+            self.right.for_each(fn)
 
     # Part 2 -----------------------
 
